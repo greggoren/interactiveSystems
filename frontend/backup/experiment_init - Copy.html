@@ -1,0 +1,36 @@
+{% extends "base_experiment.html" %}
+
+{% block content %}
+<div class="row">
+	  <div class="card">
+		<div class="card-content">
+		<span class="card-title activator grey-text text-darken-4" data-position="center" data-delay="50">Overview</span>
+
+		  <p data-position="center" data-delay="50">Thanks a lot for participating in this experiment.
+			<br> In this experiment we simulate a search engine environment. In the first stage you are asked to choose a query of interest. Then, after submitting the query you will be presented with documents that were found to be most relevant with respect to the information need manifested by the query. After completing this stage you will go on and re-enter the query. You will be presented with a list of modified documents and their rankings with respect to the query.<br>
+			This stage, simulates a re-ranking procedure done by the search engine. In real systems, documents are constantly changing. Hence, once in a fixed period, all documents are re-indexed by the search engine and reranked are with respect to different queries.<br>
+			<br>
+			After completing all stages you will be asked to fill a summarizing form.<br><br>
+			<b>Please go over the overview/instructions for each page very carefully! </b>
+			
+		  </p>
+		  
+		</div>
+		
+	  </div>
+  </div>
+<center>
+<h5>Please choose a query of interest:</h5><br><br>
+<form action="/exp/" method="POST">
+{% csrf_token %}
+{{ form.as_table }}
+<br>
+<div class="row">
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <i class="material-icons right">cloud</i>
+    </button>
+</div>
+</form>
+</center>
+{% endblock %}
+

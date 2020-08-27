@@ -1,0 +1,47 @@
+{% extends "base_experiment.html" %}
+
+{% block content %}
+<div class="row">
+	  <div class="card">
+		<div class="card-content">
+		<span class="card-title grey-text text-darken-4" data-position="center" data-delay="50">Overview</span>
+
+		  <p data-position="center" data-delay="50">Welcome!<br>
+			Thanks a lot for participating in this experiment.
+			<br> In this experiment we simulate a search engine environment. The experiment includes the following stages:
+			<ol>
+			<li>Choose a query of interest</li>
+			<li> After submitting the query you will be presented with 5 documents - the documents are ordered according to their relevance scores assigned by the search engine's algorithm (from most to least relevant)</li>
+			<li>Re-enter the query. You will be presented with a list of modified documents ordered via the same logic in previous step. This stage, simulates a re-ranking procedure done by the search engine. In real systems, documents are constantly changing. Hence, once in a fixed period, all documents are re-indexed by the search engine and are re-ranked with respect to different queries</li>
+			<li> Fill a summarizing form</li>
+			</ol>
+			<br>
+			The algorithm which is the basis of the search engine considers the following three factors:
+			<ol>
+			<li> Quality features - signals that portray the quality of the document in terms of readability and vocabulary</li>
+			<li> Language modelling features - signals that portray how query terms are distributed within the content of the document </li>
+			<li>Term frequency features -  signals that portray how frequent are the query terms within the content of the document</li>
+			</ol>
+			<b>Please go over the overview/instructions for each page very carefully! </b>
+			
+		  </p>
+		  
+		</div>
+		
+	  </div>
+  </div>
+<center>
+<h5>Please choose a query of interest:</h5><br><br>
+<form action="/exp/" method="POST">
+{% csrf_token %}
+{{ form.as_table }}
+<br>
+<div class="row">
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <i class="material-icons right">cloud</i>
+    </button>
+</div>
+</form>
+</center>
+{% endblock %}
+
